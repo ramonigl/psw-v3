@@ -79,4 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderizarGrafico();
+
+  const btnLimpar = document.getElementById('limpar-dados');
+  btnLimpar.addEventListener('click', () => {
+    if (confirm('Tem certeza que deseja apagar todos os dados?')) {
+      localStorage.removeItem('atividades');
+      renderizarGrafico();
+    }
+  });
 });
