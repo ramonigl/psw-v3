@@ -1,84 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <h1>Habit Tracker</h1>
+  <h1>Habit Tracker</h1>
 
-    <div class="grid-container">
+  <div class="grid-container">
 
-        <div class="item item1">
-            <div class="subitem">
-                <h2>Dashboard</h2>
-                <div class="input-section">
-                    <div class="input-box">
-                      <label for="data">Data</label>
-                      <div class="input-icon">
-                        <input type="date" id="data" name="data" />
-                        <span class="icon">📅</span>
-                      </div>
-                    </div>
-  
-                    <div class="input-box">
-                      <label for="busca">Buscar atividade</label>
-                      <div class="input-icon">
-                        <input type="text" id="busca" name="busca" placeholder="Digite o nome" />
-                        <span class="icon">🔍</span>
-                      </div>
-                    </div>
-  
-                    <button class="btn-filtrar">Filtrar</button>
+    <div class="item dashboard">
+      <div class="subitem">
+        <h2>Dashboard</h2>
+        <canvas id="grafico-categorias"></canvas>
+        <button id="limpar-dados" class="btn">Limpar dados</button>
+      </div>
+    </div>
+
+    <div class="item registrar-atividades">
+      <div class="subitem">
+        <h2>Categorias</h2>
+        <div id="categorias-visuais">
+          <button class="btn" id="btn-nova-categoria">
+            <span id="texto-btn-nova-categoria">+</span>
+          </button>
+        </div>
+        <form id="adicionar-nova-categoria" class="hidden">
+          <div class="input-box">
+            <label for="categoria">Adicione uma categoria</label>
+            <input type="text" name="categoria" id="categoria" required placeholder="Ex: Estudos" />
+          </div>
+          <button type="submit" class="btn" id="btn-add-categoria">
+            Adicionar categoria
+          </button>
+        </form>
+      </div>
+      <div class="subitem">
+        <h2>Registrar Atividade</h2>
+        <form id="form-atividade">
+          <div class="form-container">
+            <div class="form-group">
+              <div class="input-box">
+                <label for="nome-atividade">Atividade</label>
+                <input type="text" id="nome-atividade" name="nome-atividade" required
+                  placeholder="Ex: Estudar JavaScript" />
+              </div>
+
+              <div class="input-box">
+                <label for="select-categoria">Categoria</label>
+                <select id="select-categoria" name="select-categoria" required placeholder="Ex: Estudos"></select>
+              </div>
+            </div>
+            <div class="form-group">
+
+              <div class="input-box">
+                <label>Tempo dedicado</label>
+                <div class="tempo">
+                  <div style="display: flex; flex-direction: column;">
+                    <label for="horas">Horas</label>
+                    <input type="number" id="horas" name="horas" required placeholder="Ex: 2" min="0" />
+                  </div>
+                  <div style="display: flex; flex-direction: column;">
+                    <label for="minutos">Minutos</label>
+                    <input type="number" id="minutos" name="minutos" placeholder="Ex: 30" min="0" max="59" />
+                  </div>
                 </div>
-                <canvas id="grafico-categorias"></canvas>
-                <button id="limpar-dados" class="btn-filtrar" style="margin-top: 16px;">Limpar dados</button>
+              </div>
+
+              <div class="input-box">
+                <label for="data-atividade">Data</label>
+                <input type="date" id="data-atividade" name="data-atividade" required />
+              </div>
+              
             </div>
-        </div>
-        <div class="item item2">
-            <div class="subitem">
-                <h2>Registrar Nova atividade</h2>
-                <form id="form-atividade">
-                  <div class="input-box">
-                    <label for="nome-atividade">Atividade</label>
-                    <input type="text" id="nome-atividade" name="nome-atividade" required placeholder="Ex: Estudar JavaScript" />
-                  </div>
-    
-                  <div class="input-box">
-                    <label for="categoria">Categoria</label>
-                    <select id="categoria" name="categoria" required placeholder="Ex: Estudos">
-                        <option value="Estudo">Estudos</option>
-                        <option value="Livro">Livro</option>
-                        <option value="Lazer">Lazer</option>
-                        <option value="Hobbie">Hobbie</option>
-                    </select>
-                  </div>
-    
-                  <div class="input-box">
-                    <label for="tempo">Tempo</label>
-                    <input type="number" id="tempo" name="tempo" required placeholder="Ex: 60" />
-                  </div>
-    
-                  <div class="input-box">
-                    <label for="data-atividade">Data</label>
-                    <input type="date" id="data-atividade" name="data-atividade" required />
-                  </div>
-    
-                  <button type="submit" class="btn-filtrar">Adicionar Atividade</button>
-                </form>
-            </div>
-        </div>
-        <div class="item item3">
-            <h2>Categorias</h2>
-        </div>
+          </div>
+          <button type="submit" class="btn">Adicionar Atividade</button>
+        </form>
+      </div>
 
     </div>
 
+    <div class="item categorias">
+      <div class="subitem">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+      </div>
+    </div>
+
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
